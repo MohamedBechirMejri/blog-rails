@@ -2,9 +2,9 @@
   <div class="mx-auto">
     <%= render @post %>
     <h2 class="p-4 px-10 m-4 text-xl font-bold">Comments:</h2>
-    <%# <%  post.comments.each do | comment |% >
-      <%=  render partial: 'comments/comment', locals: { comment: comment }   % >
-    <%  end % >
-    <%=  render partial: 'comments/form', locals: { comment: Comment.new, post: post } % > %>
+    <%  @post.comments.each do | comment |%>
+      <%= render partial: 'comments/comment', locals: { comment: comment }   %>
+    <% end %>
+    <%= render partial: 'comments/form', locals: { comment: Comment.new, post: @post } %>
   </div>
 </div>
