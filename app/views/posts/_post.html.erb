@@ -6,7 +6,7 @@
         <div class="absolute p-5 text-4xl font-bold text-white bottom-10 left-5 text-shadow">
           <h1> <%= post.title %></h1>
           <p class="text-xs font-normal text-slate-100">By:
-            <%= post.user.name %>
+            <%= post.user.username %>
           </p>
         </div>
       </div>
@@ -19,9 +19,11 @@
         <h1><%= post.title %></h1>
         <p class="text-xs font-normal text-slate-100">By: <%= post.user.username %></p>
       </div>
-      <div class="absolute flex items-center gap-4 text-white top-3 right-3">
-        <%= link_to 'Edit', edit_post_path(post), class: "mt-2 rounded-2xl py-3 px-5 bg-green-500  inline-block font-medium shadow hover:bg-green-600 transition-all active:scale-95" %>
-        <%= button_to 'Remove', post_path(post), method: :delete, class: "mt-2 rounded-2xl py-3 px-5 bg-red-500 font-medium shadow hover:bg-red-600 transition-all active:scale-95" %>
+      <% if current_user && current_user.id == post.user.id %>
+        <div class="absolute flex items-center gap-4 text-white top-3 right-3">
+          <%= link_to 'Edit', edit_post_path(post), class: "mt-2 rounded-2xl py-3 px-5 bg-green-500  inline-block font-medium shadow hover:bg-green-600 transition-all active:scale-95" %>
+          <%= button_to 'Remove', post_path(post), method: :delete, class: "mt-2 rounded-2xl py-3 px-5 bg-red-500 font-medium shadow hover:bg-red-600 transition-all active:scale-95" %>
+        <% end %>
       </div>
     </div>
     <p class="inline-block px-6 py-4 m-auto text-lg font-medium text-left bg-white first-letter:text-4xl">
