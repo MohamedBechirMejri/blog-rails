@@ -20,7 +20,7 @@
         <% end %>
       </div>
     </header>
-    <% if current_user && action_name != 'new' %>
+    <% if action_name != 'new' %>
       <nav class="fixed z-50 flex items-center gap-4 bottom-7 right-7">
         <%= link_to '+', new_post_path, class: "rounded-xl py-2 px-5 bg-blue-500 text-white text-3xl block font-medium shadow-xl hover:bg-blue-600 transition-all active:scale-95" %>
       </nav>
