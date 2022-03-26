@@ -11,3 +11,21 @@
 }
 
 */
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+*::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+*::-ms-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+body {
+  overflow-x: hidden; /* Hide horizontal scrollbar */
+}
+.text-shadow {
+  text-shadow: 0 0px 4px black;
+}
