@@ -26,11 +26,22 @@
       </nav>
     <% end %>
     <main class="container flex mx-auto mb-20">
-      <% if notice %>
-        <p class="alert alert-success"><%= notice %></p>
-      <% end %>
-      <% if alert %>
-        <p class="alert alert-danger"><%= alert %></p>
+      <% if notice || alert %>
+        <div
+          class="fixed z-50 flex flex-col p-4 text-center text-white transition-all -translate-x-1/2 bg-yellow-500 rounded-lg cursor-pointer bottom-28 left-1/2 "
+          onclick="
+          this.classList.add('opacity-0');
+          this.classList.add('-translate-y-2');
+          setTimeout( () => { this.remove() }, 1000);
+          ">
+          <% if notice %>
+            <p class="alert alert-success"><%= notice %></p>
+          <% end %>
+          <% if alert %>
+            <p class="alert alert-danger"><%= alert %></p>
+          <% end %>
+          <span class="text-gray-500">(click to dismiss)</span>
+        </div>
       <% end %>
       <%= yield %>
     </main>
