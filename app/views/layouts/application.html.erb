@@ -12,11 +12,9 @@
   <body>
     <header class="relative flex justify-center w-screen p-8">
       <%= link_to "MBlogs", root_path, class: 'text-4xl font-bold' %>
-      <div class="absolute right-0">
+      <div class="absolute right-4">
         <% if current_user %>
           <%= link_to "Logout", destroy_user_session_path,  'data-turbo-method': :delete, class: 'rounded-xl py-2 px-5 bg-red-500 text-white text-sm block font-medium shadow-xl hover:bg-red-600 transition-all active:scale-95' %>
-        <% else %>
-          <%= link_to "Login", new_user_session_path, class: 'rounded-xl py-2 px-5 bg-green-500 text-white text-sm block font-medium shadow-xl hover:bg-green-600 transition-all active:scale-95' %>
         <% end %>
       </div>
     </header>
