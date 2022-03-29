@@ -81,3 +81,5 @@ group :test do
 end
 
 gem 'devise', '~> 4.8'
+
+gem "ransack", "~> 2.6"

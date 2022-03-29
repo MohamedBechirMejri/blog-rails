@@ -5,7 +5,7 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
-    @posts = Post.all
+    @posts = blog_posts
   end
 
   # GET /posts/1 or /posts/1.json
@@ -72,5 +72,14 @@ class PostsController < ApplicationController
 
   def check_ownership
     redirect_to root_url unless @post.user == current_user
+  end
+
+  def search_query
+    params[:query]
+  end
+
+  def blog_posts
+    query = Post.ransack(title_or_body_cont: search_query)
+    query.result(distinct: true)
   end
 end
