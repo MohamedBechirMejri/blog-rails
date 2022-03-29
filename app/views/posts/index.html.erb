@@ -1,7 +1,7 @@
 <div class="w-full">
-  <div>
+  <div class="flex items-center justify-center w-full p-8">
     <%= form_with url: posts_url, method: :get do |f| %>
-      <%= f.text_field :query, id: "search-input" %>
+      <%= f.text_field :query, id: "search-input", class: 'block shadow rounded-md border border-gray-200 outline-none px-7 py-2 mt-2 w-full transition-all font-semibold text-2xl text-center placeholder:text-gray-300', placeholder: 'Search!' %>
     <% end %>
   </div>
   <div id="posts" class="grid min-w-full gap-2 p-4 md:grid-cols-2 lg:grid-cols-3">
