@@ -1,6 +1,17 @@
 const search_input = document.getElementById("search-input");
+let posts = document.getElementById("posts");
 
-search_input.addEventListener("input", e => {
+const debounce = (f, timeout = 350) => {
+  let timer;
+  return (...args) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      f.apply(this, args);
+    }, timeout);
+  };
+};
+
+const request_search = debounce(e => {
   fetch("/posts?query=" + e.target.value, {
     method: "GET",
     headers: {
@@ -13,6 +24,10 @@ search_input.addEventListener("input", e => {
       return res.text();
     })
     .then(text => {
-      document.getElementById("posts").innerHTML = text;
+      posts.innerHTML = text;
     });
+}, 450);
+
+search_input.addEventListener("input", e => {
+  request_search(e);
 });
