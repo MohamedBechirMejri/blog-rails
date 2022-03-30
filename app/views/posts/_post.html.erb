@@ -1,5 +1,5 @@
 <div id="<%= dom_id post %>">
-  <% if action_name != 'show' %>
+  <% if action_name != 'show' || params[:controller] != 'posts' %>
     <%= link_to post  do %>
       <div class="relative m-1 overflow-hidden transition-all hover:scale-105 active:scale-95">
         <img src="<%= post.picture_url %>" class="block shadow-xl rounded-2xl">
@@ -12,7 +12,7 @@
       </div>
     <% end %>
   <% end %>
-  <% if action_name == 'show' %>
+  <% if action_name == 'show' && params[:controller] == 'posts' %>
     <div class="relative m-1 overflow-hidden">
       <img src="<%= post.picture_url %>" class="block w-screen shadow-xl rounded-2xl">
       <div class="absolute p-5 text-2xl font-bold text-white bottom-10 left-5 text-shadow ">
