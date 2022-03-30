@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   # GET /users or /users.json
   def index
-    @users = User.all
+    @users = search_users
   end
 
   # GET /users/1 or /users/1.json
@@ -54,5 +54,14 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation, :picture_url, :bio)
+  end
+
+  def search_query
+    params[:query]
+  end
+
+  def search_users
+    query = User.ransack(username_cont: search_query)
+    query.result(distinct: true)
   end
 end
