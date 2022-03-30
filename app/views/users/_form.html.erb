@@ -1,8 +1,7 @@
-<%= form_with(model: user) do |form| %>
+<%= form_with(model: user, class: "contents") do |form| %>
   <% if user.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
       <ul>
         <% user.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -10,23 +9,16 @@
       </ul>
     </div>
   <% end %>
-
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
+  <div class="my-5">
+    <%= form.text_field :username , placeholder: 'Name',  class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full transition-all" %>
   </div>
-
-  <div>
-    <%= form.label :picture_url, style: "display: block" %>
-    <%= form.text_field :picture_url %>
+  <div class="my-5">
+    <%= form.text_field :picture_url , placeholder: 'https://picsum.photos/500/500',  class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full transition-all" %>
   </div>
-
-  <div>
-    <%= form.label :bio, style: "display: block" %>
-    <%= form.text_area :bio %>
+  <div class="my-5">
+    <%= form.text_area :bio , placeholder: 'A little something about You!',  class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full transition-all", rows: 5 %>
   </div>
-
-  <div>
-    <%= form.submit %>
+  <div class="my-5">
+    <%= form.submit class: 'rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer hover:bg-blue-700 active:scale-95 transition-all' %>
   </div>
 <% end %>
