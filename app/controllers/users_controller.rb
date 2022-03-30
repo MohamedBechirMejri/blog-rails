@@ -51,4 +51,8 @@ class UsersController < ApplicationController
   def check_ownership
     redirect_to root_url unless @user == current_user
   end
+
+  def user_params
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :picture_url, :bio)
+  end
 end
