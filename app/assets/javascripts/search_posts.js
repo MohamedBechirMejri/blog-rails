@@ -12,7 +12,6 @@ debounce = (f, timeout = 350) => {
 };
 
 request_search = debounce(e => {
-  console.log(e.target.value);
   fetch("/posts?query=" + e.target.value, {
     method: "GET",
     headers: {
@@ -25,7 +24,7 @@ request_search = debounce(e => {
       return res.text();
     })
     .then(text => {
-      posts.innerHTML = text;
+      whatToSearch.innerHTML = text;
     });
 }, 450);
 
