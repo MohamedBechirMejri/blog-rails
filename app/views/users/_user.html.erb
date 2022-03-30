@@ -2,15 +2,22 @@
   <% if action_name != 'show' %>
     <%= link_to user  do %>
       <div class="flex items-center justify-start p-0 m-1 overflow-hidden transition-all rounded shadow hover:scale-105 active:scale-95">
-        <%# <img src="< %= user.picture_url % >" class="block shadow-xl rounded-2xl"> %>
-        <img src="https://picsum.photos/500/500" class="w-20 h-20">
+        <% if user.picture_url %>
+          <img src="https://picsum.photos/500/500" class="w-20 h-20">
+        <% else %>
+          <img src="<%= user.picture_url %>" class="w-20 h-20">
+        <% end %>
         <h1 class="px-5 font-semibold"> <%= user.username %></h1>
       </div>
     <% end %>
   <% end %>
   <% if action_name == 'show' %>
     <div class="flex flex-col items-center w-full m-1 overflow-hidden">
-      <img src="https://picsum.photos/500/500" class="rounded h-28 w-28">
+      <% if user.picture_url %>
+        <img src="https://picsum.photos/500/500" class="rounded h-28 w-28">
+      <% else %>
+        <img src="<%= user.picture_url %>" class="rounded h-28 w-28">
+      <% end %>
       <p class="p-4 text-2xl font-semibold"> <%= user.username %> </p>
       <% if current_user && current_user.id == user.id %>
         <div class="flex items-center gap-4 ">
