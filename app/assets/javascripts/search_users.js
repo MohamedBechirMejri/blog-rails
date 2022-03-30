@@ -1,7 +1,7 @@
-const search_input = document.getElementById("search-input");
-let posts = document.getElementById("posts");
+search_input = document.getElementById("search-input");
+whatToSearch = document.getElementById("users");
 
-const debounce = (f, timeout = 350) => {
+debounce = (f, timeout = 350) => {
   let timer;
   return (...args) => {
     clearTimeout(timer);
@@ -11,8 +11,8 @@ const debounce = (f, timeout = 350) => {
   };
 };
 
-const request_search = debounce(e => {
-  fetch("/posts?query=" + e.target.value, {
+request_search = debounce(e => {
+  fetch("/users?query=" + e.target.value, {
     method: "GET",
     headers: {
       Accept: "application/javascript",
@@ -24,7 +24,7 @@ const request_search = debounce(e => {
       return res.text();
     })
     .then(text => {
-      posts.innerHTML = text;
+      whatToSearch.innerHTML = text;
     });
 }, 450);
 
