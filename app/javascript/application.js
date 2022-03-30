@@ -3,5 +3,3 @@ import "@hotwired/turbo-rails";
 import "controllers";
 //= stub 'search_posts'
 //= stub 'search_users'
-let search_input;
-let whatToSearch;
