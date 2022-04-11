@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[show edit update destroy]
-  before_action :authenticate_user!, except: %i[index show]
-  before_action :check_ownership, only: %i[edit update destroy]
+  # before_action :authenticate_user!, except: %i[index show]
+  # before_action :check_ownership, only: %i[edit update destroy]
 
   # GET /users or /users.json
   def index
@@ -17,10 +17,16 @@ class UsersController < ApplicationController
   end
 
   # GET /users/1/edit
-  def edit; end
+  def edit
+    @user = User.find(params[:id])
+    authorize(@user)
+  end
 
   # PATCH/PUT /users/1 or /users/1.json
   def update
+    @user = User.find(params[:id])
+    authorize @user
+
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to user_url(@user), notice: 'User was successfully updated.' }
@@ -34,6 +40,8 @@ class UsersController < ApplicationController
 
   # DELETE /users/1 or /users/1.json
   def destroy
+    @user = User.find(params[:id])
+    authorize @user
     @user.destroy
 
     respond_to do |format|

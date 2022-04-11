@@ -19,6 +19,7 @@ class CommentsController < ApplicationController
 
   # POST /comments or /comments.json
   def create
+    authorize @comment
     @comment = current_user.comments.new(comment_params)
 
     respond_to do |format|
@@ -49,6 +50,7 @@ class CommentsController < ApplicationController
 
   # DELETE /comments/1 or /comments/1.json
   def destroy
+    authorize @comment
     @comment.destroy
 
     respond_to do |format|
