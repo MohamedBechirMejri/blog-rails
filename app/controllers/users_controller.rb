@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[show edit update destroy]
-  # before_action :authenticate_user!, except: %i[index show]
-  # before_action :check_ownership, only: %i[edit update destroy]
+  before_action :authenticate_user!, except: %i[index show]
+  before_action :check_ownership, only: %i[edit update destroy]
 
   # GET /users or /users.json
   def index
